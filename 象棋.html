@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>象棋</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 'Noto Serif TC', serif;
+
+        }
+
+        .border {
+            width: 450px;
+            height: 500px;
+            border: 1px black solid;
+            margin: 250px auto;
+        }
+
+        .container {
+            width: 334px;
+            height: 363px;
+            border: 1px black solid;
+            margin: 60px auto;
+
+        }
+
+        .line1 {
+            display: flex;
+            position: relative;
+        }
+
+        .line2 {
+            display: flex;
+        }
+
+        .line3 {
+            display: flex;
+        }
+
+        .line4 {
+            display: flex;
+        }
+
+        .line5 {
+            display: flex;
+        }
+
+        .line6 {
+            display: flex;
+        }
+
+        .line7 {
+            display: flex;
+        }
+
+        .line8 {
+            display: flex;
+        }
+
+        .line9 {
+            display: flex;
+        }
+
+        .item {
+            border: 1px black solid;
+            width: 40px;
+            height: 40px;
+            background-color: rgb(255, 255, 255);
+            margin: 0px auto;
+            flex-wrap: wrap;
+
+
+        }
+
+        .center {
+            width: 335px;
+            height: 40px;
+            border: 1px black solid;
+            background-color: rgb(117, 116, 113);
+            font-size: 30px;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        .cross {
+            width: 40px;
+            height: 40px;
+            border-top: 40px solid rgba(255, 0, 0, 0.561);
+            border-right: 40px solid transparent;
+        }
+
+        .cross2 {
+            width: 40px;
+            height: 40px;
+            border-top: 40px solid rgba(255, 0, 0, 0.561);
+            border-left: 40px solid transparent;
+        }
+
+        .circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: black 2px solid;
+            background-color: rgb(255, 255, 255);
+            font-size: 20px;
+            text-align: center;
+            line-height: 28px;
+            position: relative;
+            top: -18px;
+            left: -18px;
+
+        }
+
+
+        .circle2 {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: black 2px solid;
+            background-color: rgb(255, 255, 255);
+            font-size: 20px;
+            text-align: center;
+            line-height: 28px;
+            position: relative;
+            top: -55px;
+            left: 24px;
+        }
+
+        .circle3 {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: black 2px solid;
+            background-color: rgb(255, 255, 255);
+            font-size: 20px;
+            text-align: center;
+            line-height: 28px;
+            position: relative;
+            top: -20px;
+            left: 24px;
+        }
+
+        .circle-red-right {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: black 2px solid;
+            background-color: #eee;
+            font-size: 20px;
+            text-align: center;
+            line-height: 28px;
+            position: relative;
+            top: -20px;
+            left: 24px;
+        }
+
+        .circle-down {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: black 2px solid;
+            background-color: #eee;
+            font-size: 20px;
+            text-align: center;
+            line-height: 28px;
+            position: relative;
+            top: 20px;
+            left: -20px;
+            z-index: 2;
+        }
+
+        .circle-down-right {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: black 2px solid;
+            background-color: #eee;
+            font-size: 20px;
+            text-align: center;
+            line-height: 28px;
+            position: relative;
+            top: -16px;
+            left: 20px;
+        }
+
+        .Rightslash:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 120px;
+            border-top: 2px #000 solid;
+            display: block;
+            width: 40px;
+            height: 100%;
+            transform: rotate(45deg);
+        }
+
+        .Leftslash:after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 110px;
+            border-top: 2px #000 solid;
+            display: block;
+            width: 50px;
+            height: 100%;
+            transform: rotate(-45deg);
+        }
+
+        .Rightslash2 {
+            position: relative;
+            width: 57px;
+            background-color: black;
+            height: 2px;
+            transform: rotate(45deg);
+            top: 16px;
+            right: -30px;
+        }
+
+
+        .Leftslash2 {
+            position: relative;
+            top: 16px;
+            left: -50px;
+            width: 55px;
+            background-color: black;
+            height: 2px;
+            transform: rotate(-45deg);
+        }
+
+        .Leftslash3 {
+            position: relative;
+            top: 16px;
+            left: -50px;
+            width: 55px;
+            background-color: black;
+            height: 2px;
+            transform: rotate(-45deg);
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="border">
+
+        <div class="container">
+
+            <div class="line1">
+                <div class="item">
+                    <div class="circle">車</div>
+                </div>
+                <div class="item">
+                    <div class="circle">馬</div>
+                </div>
+                <div class="item">
+                    <div class="circle">象</div>
+                </div>
+                <div class="item Rightslash">
+                    <div class="circle">士</div>
+                </div>
+                <div class="item Leftslash">
+                    <div class="circle">將</div>
+                </div>
+                <div class="item">
+                    <div class="circle">士</div>
+                </div>
+                <div class="item">
+                    <div class="circle">象</div>
+                </div>
+                <div class="item">
+                    <div class="circle">馬</div>
+                    <div class="circle2">車</div>
+                </div>
+
+            </div>
+            <div class="line2">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item "></div>
+                <div class="item ">
+                    <div class="Rightslash2"></div>
+                </div>
+                <div class="item ">
+                    <div class="Leftslash2"></div>
+                </div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <div class="line3">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item">
+                    <div class="circle">包</div>
+                </div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item">
+
+                </div>
+                <div class="item">
+                    <div class="circle">包</div>
+                </div>
+                <div class="item"></div>
+            </div>
+            <div class="line4">
+                <div class="item">
+                    <div class="circle">卒</div>
+                </div>
+                <div class="item">
+
+                </div>
+                <div class="item">
+                    <div class="circle">卒</div>
+                </div>
+                <div class="item">
+
+                </div>
+                <div class="item">
+                    <div class="circle">卒</div>
+                </div>
+                <div class="item">
+
+                </div>
+                <div class="item">
+                    <div class="circle">卒</div>
+                </div>
+                <div class="item">
+                    <div class="circle3">卒</div>
+                </div>
+            </div>
+
+            <div class="line5">
+                <div class="center">楚河 漢界</div>
+
+            </div>
+            <div class="line6">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <div class="line7">
+                <div class="item">
+                    <div class="circle" style="color: red;background-color: white;">兵</div>
+                </div>
+                <div class="item"></div>
+                <div class="item">
+                    <div class="circle" style="color: red;background-color: white;">兵</div>
+                </div>
+                <div class="item"></div>
+                <div class="item">
+                    <div class="circle" style="color: red;background-color: white;">兵</div>
+                </div>
+                <div class="item"></div>
+                <div class="item">
+                    <div class="circle" style="color: red;background-color: white;">兵</div>
+                </div>
+                <div class="item">
+                    <div class="circle-red-right" style="color: red;background-color: white;">兵</div>
+                </div>
+            </div>
+            <div class="line8">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item">
+                    <div class="Rightslash2"></div>
+                    <div class="circle" style="color: red;background-color: white;">炮</div>
+                </div>
+                <div class="item ">
+                </div>
+                <div class="item ">
+
+                </div>
+                <div class="item">
+                    <div class="Leftslash2"></div>
+                </div>
+                <div class="item">
+                    <div class="circle" style="color: red;background-color: white;">炮</div>
+                </div>
+                <div class="item"></div>
+            </div>
+            <div class="line9">
+                <div class="item">
+                    <div class="circle-down" style="color: red;background-color: white;">俥</div>
+                </div>
+                <div class="item">
+                    <div class="circle-down" style="color: red;background-color: white;">馬</div>
+                </div>
+                <div class="item">
+                    <div class="circle-down" style="color: red;background-color: white;">相</div>
+                </div>
+                <div class="item ">
+                    <div class="Rightslash2"></div>
+                    <div class="circle-down" style="color: red;background-color: white;">仕</div>
+                </div>
+                <div class="item ">
+                    <div class="Leftslash3"></div>
+
+                    <div class="circle-down" style="color: red;background-color: white;">帥</div>
+                </div>
+                <div class="item">
+                    <div class="circle-down" style="color: red;background-color: white; ">仕</div>
+                </div>
+                <div class="item">
+                    <div class="circle-down" style="color: red;background-color: white;">相</div>
+                </div>
+                <div class="item">
+                    <div class="circle-down" style="color: red;background-color: white;">馬</div>
+
+                    <div class="circle-down-right" style="color: red;background-color: white;">俥</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+
+</html>
